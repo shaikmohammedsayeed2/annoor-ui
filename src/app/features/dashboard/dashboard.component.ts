@@ -1,26 +1,137 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { API, APIDefinition, Columns, Config, DefaultConfig } from 'ngx-easy-table';
+import { Columns, API, DefaultConfig, Config, APIDefinition, Pagination } from 'ngx-easy-table';
 import { ExportToCsv } from 'export-to-csv';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('table', { static: true }) table!: APIDefinition;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private cdr: ChangeDetectorRef) { }
 
   home(){
     this.router.navigate(['/dashboard']);
   }
   public configuration!: Config;
   public columns!: Columns[];
-
+  public paginationTotalItems!: number;
+  pagination!: Pagination;
+  public total:any;
   public data = [{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },
+  {
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  },{
     phone: '+1 (934) 551-2224',
     age: 20,
     address: { street: 'North street', number: 12 },
@@ -42,6 +153,9 @@ export class DashboardComponent implements OnInit {
     this.configuration.rowReorder = true;
     this.configuration.columnReorder = true;
     this.configuration.fixedColumnWidth = false;
+    this.configuration.checkboxes = true;
+    this.configuration.paginationRangeEnabled = false;
+    this.configuration.paginationEnabled = false;
     // ... etc.
     this.columns = [
       { key: 'phone', title: 'Phone' },
@@ -72,5 +186,20 @@ export class DashboardComponent implements OnInit {
       type: API.onGlobalSearch,
       value: (event.target as HTMLInputElement).value,
     });
+  }
+  ngAfterViewInit(): void {
+    this.paginationTotalItems = this.table.apiEvent({
+      type: API.getPaginationTotalItems,
+    });
+    this.cdr.detectChanges();
+  }
+
+  paginationEvent($event: PageEvent): void {
+    this.pagination = {
+      ...this.pagination,
+      limit: $event.pageSize,
+      offset: $event.pageIndex + 1,
+      count: $event.length,
+    };
   }
 }
