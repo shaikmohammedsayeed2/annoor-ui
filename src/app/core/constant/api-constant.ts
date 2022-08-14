@@ -7,5 +7,6 @@ export enum ApiMethod {
   }  
   export enum AuthEndPoints {
     LOGIN = 'SamlAuth/GetRedirectURI',
+    DASHBOARD_DETAILS = 'TaStudentdetails/GetDashboardData'
   }
   
