@@ -150,10 +150,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.configuration = { ...DefaultConfig };
     this.configuration.searchEnabled = true;
-    this.configuration.rowReorder = true;
-    this.configuration.columnReorder = true;
-    this.configuration.fixedColumnWidth = false;
-    this.configuration.checkboxes = true;
+    this.configuration.fixedColumnWidth = true;
     this.configuration.paginationRangeEnabled = false;
     this.configuration.paginationEnabled = false;
     // ... etc.
