@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 declare var main:any;
 
 @Component({
@@ -8,10 +9,15 @@ declare var main:any;
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: Router
+  ) { }
 
   ngOnInit(): void {
     new main()
+  }
+  goto(url:any){
+    this.route.navigate([url])
   }
 
 }

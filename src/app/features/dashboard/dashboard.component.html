@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="column col-lg-12">
-      <form class="form-horizontal">
+      <form class="form-horizontal"  (submit)="false">
         <div class="form-group">
           <div class="row">
             <div class="col-lg-12 mb-2 d-flex justify-content-end">
@@ -42,9 +42,7 @@
         [configuration]="configuration"
         [data]="data$ | async"
         #table
-        [pagination]="pagination"
         [columns]="columns"
-        (event)="onEvent($event)"
         >
         <ng-template let-row>
           <td>
@@ -78,26 +76,9 @@
            <i class="bx bxs-edit action" style="color:blue;" (click)="goToEdit(row)" placement="top" ngbTooltip="Edit"></i>
             <i class="bi bi-arrow-up-right-square-fill action" style="color: green;"(click)="goToEdit(row)" placement="top" ngbTooltip="View"></i>
             <i class="bi bi-trash-fill action" style="color: black;"(click)="goToEdit(row)"placement="top" ngbTooltip="Delete"></i>
-            <!-- <i class="bi bi-plus-square-fill" style="color: ;"></i> -->
-            <!-- <button class="btn btn-primary btn-sm">
-              Edit
-            </button>
-            <button class="btn btn-primary btn-sm" (click)="goToEdit(row)">
-              Edit
-            </button>
-            <button class="btn btn-primary btn-sm" (click)="goToEdit(row)">
-              Edit
-            </button> -->
           </td>
         </ng-template>
       </ngx-table>
     </div>
-    <mat-paginator
-      [length]="paginationTotalItems"
-      [pageSize]="10"
-      (page)="paginationEvent($event)"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-    >
-    </mat-paginator>
   </div>
 </section>

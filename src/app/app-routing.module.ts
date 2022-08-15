@@ -9,38 +9,43 @@ const routes: Routes = [
     path: '',
     redirectTo: '/auth',
     pathMatch: 'full',
-},
-{
+  },
+  {
     path: 'auth',
     component: AuthComponent,
-},
-{
+  },
+  {
     path: 'auth/:id',
     component: AuthComponent,
-},
-{
+  },
+  {
     path: 'login',
     component: AuthComponent,
-},
-{
-  path: '',
-  component: LayoutComponent,
-  children: [
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
       {
-          path: 'dashboard',
-          component: DashboardComponent
+        path: 'dashboard',
+        component: DashboardComponent,
       },
       {
-          path: 'dashboard/:id',
-          component: DashboardComponent
+        path: 'dashboard/:id',
+        component: DashboardComponent,
       },
-  ]
-},
-{ path: '**', redirectTo: '/' }
+      {
+        path: 'student',
+        loadChildren: () =>
+          import('./features/users/users.module').then((m) => m.UsersModule),
+      },
+    ],
+  },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

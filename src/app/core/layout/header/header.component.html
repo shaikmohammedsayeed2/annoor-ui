@@ -9,7 +9,7 @@
   </div>
   <!-- End Logo -->
 
-  <div class="search-bar">
+  <!-- <div class="search-bar">
     <form
       class="search-form d-flex align-items-center"
       method="POST"
@@ -23,7 +23,7 @@
       />
       <button type="submit" title="Search"><i class="bi bi-search"></i></button>
     </form>
-  </div>
+  </div> -->
   <!-- End Search Bar -->
 
   <nav class="header-nav ms-auto">
@@ -34,7 +34,7 @@
         </a>
       </li>
       <!-- End Search Icon-->
-      <li class="nav-item">
+      <li class="nav-item" (click)="goto('/student/addstudent')">
             <span class="d-none d-lg-block" style="color: black;font-weight: bold;">Add Student<i
               class="bi bi-plus-square-fill"
               style="color: #012970; cursor: pointer;margin-left: 4px;"

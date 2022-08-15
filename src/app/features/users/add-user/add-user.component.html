@@ -1,0 +1,229 @@
+<div class="pagetitle">
+  <h1>Add Student</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a (click)="goto('/dashboard')" class="handPointer">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="handPointer">Students</a>
+      </li>
+      <li class="breadcrumb-item active">Add Student</li>
+    </ol>
+  </nav>
+</div>
+<section class="section">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-11">
+      <div class="card">
+        <div class="card-body">
+          <form
+            class="row g-3"
+            [formGroup]="studentFormGroup"
+            (ngSubmit)="onSubmit()"
+          >
+            <h5 class="card-title">Student Details</h5>
+            <div class="col-md-4">
+              <label for="SId" class="form-label"
+                >Student Admission Number</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                formControlName="SId"
+                id="SId"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SName" class="form-label">Student Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SName"
+                id="SName"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SSurname" class="form-label">Surname</label>
+              <input
+                type="text"
+                class="form-control"
+                id="SSurname"
+                formControlName="SSurname"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustomUsername" class="form-label"
+                >Gender</label
+              >
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="male"
+                  formControlName="SGender"
+                />
+                <label class="form-check-label" for="male"> Male </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="female"
+                  formControlName="SGender"
+                />
+                <label class="form-check-label" for="female"> Female </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input
+                type="date"
+                class="form-control"
+                id="dob"
+                formControlName="SDOB"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SAadhaarNo" class="form-label"
+                >Student Aadhaar No.</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                formControlName="SAadhaar"
+                id="SAadhaarNo"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SGovtIdNo" class="form-label">Govt. Child Id</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SGovtId"
+                id="SGovtIdNo"
+              />
+            </div>
+            <h5 class="card-title">Student Extra Details</h5>
+            <div class="col-md-4">
+              <label for="SCaste" class="form-label">Student Caste</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SCaste"
+                id="SCaste"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SReligion" class="form-label">Student Religion</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SReligion"
+                id="SReligion"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SNationality" class="form-label">Nationality</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SNationality"
+                id="SNationality"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SMotherTounge" class="form-label"
+                >Mother Tounge</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SMotherTounge"
+                id="SMotherTounge"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-check">
+                <label for="SDisabilityAny" class="form-check-label"
+                  >Disability If Any
+                </label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  formControlName="SDisabilityAny"
+                  id="SDisabilityAny"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="SFacilitiesRequired" class="form-label"
+                >Facilites if Required</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SFacilitiesRequired"
+                id="SFacilitiesRequired"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SIdentificationMarks1" class="form-label">
+                Identification Mark 1</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SIdentificationMarks1"
+                id="SIdentificationMarks1"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SIdentificationMarks2" class="form-label"
+                >Identification Mark 2</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SIdentificationMarks2"
+                id="SIdentificationMarks2"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="DateOfAdmission" class="form-label"
+                >Date of Admission</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                formControlName="DateOfAdmission"
+                id="DateOfAdmission"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="SPlaceofBirth" class="form-label"
+                >Place of Birth</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="SPlaceofBirth"
+                id="SPlaceofBirth"
+              />
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+          </form>
+          <!-- End Custom Styled Validation -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

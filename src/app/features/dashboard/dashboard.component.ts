@@ -7,7 +7,6 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Columns, API, DefaultConfig, Config, APIDefinition, Pagination } from 'ngx-easy-table';
 import { ExportToCsv } from 'export-to-csv';
@@ -40,8 +39,6 @@ export class DashboardComponent implements OnInit {
     this.configuration = { ...DefaultConfig };
     this.configuration.searchEnabled = true;
     this.configuration.fixedColumnWidth = true;
-    this.configuration.paginationRangeEnabled = false;
-    this.configuration.paginationEnabled = false;
     // ... etc.
     this.columns = [
       { key: 'studentId', title: 'ID' },
@@ -78,26 +75,9 @@ export class DashboardComponent implements OnInit {
       value: (event.target as HTMLInputElement).value,
     });
   }
-  ngAfterViewInit(): void {
-    this.paginationTotalItems = this.table.apiEvent({
-      type: API.getPaginationTotalItems,
-    });
-    this.cdr.detectChanges();
-  }
 
-  paginationEvent($event: PageEvent): void {
-    this.pagination = {
-      ...this.pagination,
-      limit: $event.pageSize,
-      offset: $event.pageIndex + 1,
-      count: $event.length,
-    };
-  }
 
- 
-  onEvent(event: { event: string; value: any }): void {
-    this.selected = JSON.stringify(event.value.row, null, 2);
-  }
+
   goToEdit(row:any){
     alert(JSON.stringify(row,null,2))
     alert(row.studentId)
