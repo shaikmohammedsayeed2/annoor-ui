@@ -8,13 +8,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 
 @NgModule({
   declarations: [
     AddUserComponent,
     EditUserComponent,
-  UsersComponent  ],
+  UsersComponent,
+  ViewUserComponent  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: true,
-  apiUrl:'https://localhost:7063/api/',
+  // apiUrl:'https://localhost:7063/api/',
+  apriUrl:'https://annoorapi.azure-api.net/v1/api/'
 };
 
 /*

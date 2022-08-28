@@ -53,7 +53,7 @@ export class AddUserComponent implements OnInit {
       MWhatsApp: [null],
       FWhatsApp: [null],
       MLiteracyStatus: [true],
-      FLiteracyStatus: [null],
+      FLiteracyStatus: [true],
       FOccupation: [null],
       MOccupation: [null],
       FAadhaar: [null],
