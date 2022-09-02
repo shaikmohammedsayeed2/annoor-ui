@@ -61,12 +61,21 @@ export class AddUserComponent implements OnInit {
       BankIFSC:[null],
       BranchName:[null],
       AccountNumber:[null],
-      RationCardNumber:[null]
+      RationCardNumber:[null],
+      GuardianRequired:[false],
+      GuardianName:[null],
+      GuardianPhoneNo:[null],
+      GuardianAadhaar:[null],
+      GuardianEmail:[null],
+      GuardianWhatsApp:[null],
+      GuardianLiteracyStatus:[null],
+      GuardianOccupation:[null]
     });
-   
+
 
   }
   onSubmit(){
-   alert('h1') 
+    // console.log(this.studentDetailsForm["GuardianRequired"].value)
+   alert('h1')
   }
 }
