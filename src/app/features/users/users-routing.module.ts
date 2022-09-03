@@ -1,3 +1,4 @@
+import { ViewUserComponent } from './view-user/view-user.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -16,9 +17,12 @@ const routes: Routes = [
         path: 'addstudent',
         component: AddUserComponent,
       },
-      
+      {
+        path: 'viewstudent/:id',
+        component: ViewUserComponent,
+      },
     ],
-  }
+  },
 ];
 
 @NgModule({

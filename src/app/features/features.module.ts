@@ -6,18 +6,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsersModule } from './users/users.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     TableModule,
     HttpClientModule,
     NgbModule,
     UsersModule,
-  ]
+    RouterModule,
+  ],
 })
-export class FeaturesModule { }
+export class FeaturesModule {}

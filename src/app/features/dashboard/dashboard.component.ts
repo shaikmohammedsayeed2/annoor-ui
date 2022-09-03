@@ -21,20 +21,20 @@ import { DashboardService } from './dashboard.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
-  public selected:any;
+  public selected: any;
   @ViewChild('table', { static: true }) table!: APIDefinition;
   public data$!: Observable<any>;
-  constructor(private router:Router,private cdr: ChangeDetectorRef,
-    private dashboardService:DashboardService) { }
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private dashboardService: DashboardService
+  ) {}
 
-  home(){
-    this.router.navigate(['/dashboard']);
-  }
   public configuration!: Config;
   public columns!: Columns[];
   public paginationTotalItems!: number;
   pagination!: Pagination;
-  public total:any;
+  public total: any;
   ngOnInit(): void {
     this.configuration = { ...DefaultConfig };
     this.configuration.searchEnabled = true;
@@ -52,9 +52,9 @@ export class DashboardComponent implements OnInit {
       { key: 'govtChildId', title: 'Child ID' },
       { key: 'edit', title: 'Edit' },
     ];
-    this.data$=this.dashboardService.getDashboardData()
+    this.data$ = this.dashboardService.getDashboardData();
   }
-  
+
   exportToCSV(): void {
     const options = {
       fieldSeparator: ',',
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
       useKeysAsHeaders: true,
     };
     const csvExporter = new ExportToCsv(options);
-    this.data$.subscribe((val:any)=> csvExporter.generateCsv(val))
+    this.data$.subscribe((val: any) => csvExporter.generateCsv(val));
   }
   onChange(event: Event): void {
     this.table.apiEvent({
@@ -76,10 +76,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  goto(url: any) {
+    this.router.navigate([url]);
+  }
 
-
-  goToEdit(row:any){
-    alert(JSON.stringify(row,null,2))
-    alert(row.studentId)
+  goToEdit(row: any) {
+    alert(JSON.stringify(row, null, 2));
+    alert(row.studentId);
   }
 }

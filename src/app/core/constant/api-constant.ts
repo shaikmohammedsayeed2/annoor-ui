@@ -4,9 +4,9 @@ export enum ApiMethod {
     PUT = 'put',
     DELETE = 'delete',
     PATCH = 'patch'
-  }  
+  }
   export enum AuthEndPoints {
     LOGIN = 'SamlAuth/GetRedirectURI',
-    DASHBOARD_DETAILS = 'TaStudentdetails/GetDashboardData'
+    DASHBOARD_DETAILS = 'TaStudentdetails/GetDashboardData',
+    GET_STUDENT_DETAILS_BYID = 'TaStudentdetails/GetStudentDataByID?id=',
   }
-  
