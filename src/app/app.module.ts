@@ -15,6 +15,7 @@ import {
   NgxUiLoaderRouterModule,
   SPINNER,
 } from 'ngx-ui-loader';
+import { httpInterceptorProviders } from './core/service/http/http.interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'black',
@@ -40,7 +41,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserAnimationsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({ showForeground: true })  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    providers: [httpInterceptorProviders],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

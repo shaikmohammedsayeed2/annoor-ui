@@ -1,5 +1,22 @@
 <div ngxUiLoaderBlurred [blur]="10">
     <!-- This page content will be blurred/frosted when foreground loader is showed -->
   </div>
-  <ngx-ui-loader ></ngx-ui-loader>
+  <ngx-ui-loader [fgsTemplate]="foregroundSpinner" [bgsTemplate]="backgroundSpinner" [fgsSize]="100" [bgsSize]="64"></ngx-ui-loader>
+  <ng-template #foregroundSpinner>
+    <div class="sk-chase">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+  </ng-template>
+  
+  <ng-template #backgroundSpinner>
+    <div class="la-ball-clip-rotate-multiple la-2x">
+      <div></div>
+      <div></div>
+    </div>
+  </ng-template>
 <router-outlet></router-outlet>

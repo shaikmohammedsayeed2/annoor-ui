@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsersModule } from './users/users.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import { RouterModule } from '@angular/router';
     NgbModule,
     UsersModule,
     RouterModule,
-  ],
+  ]
 })
 export class FeaturesModule {}

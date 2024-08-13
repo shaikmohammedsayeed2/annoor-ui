@@ -50,7 +50,6 @@
               "src/assets/vendor/tinymce/tinymce.js",
               "src/assets/vendor/php-email-form/validate.js",
               "src/assets/js/main.js"
-
             ]
           },
           "configurations": {
@@ -139,8 +138,7 @@
               "src/assets/vendor/tinymce/tinymce.min.js",
               "src/assets/vendor/tinymce/tinymce.js",
               "src/assets/vendor/php-email-form/validate.js",
-              "src/assets/js/main.js"
-            ]
+              "src/assets/js/main.js"            ]
           }
         }
       }

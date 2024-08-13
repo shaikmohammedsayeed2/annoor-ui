@@ -12,6 +12,7 @@ import { Columns, API, DefaultConfig, Config, APIDefinition, Pagination } from '
 import { ExportToCsv } from 'export-to-csv';
 import { Observable } from 'rxjs';
 import { DashboardService } from './dashboard.service';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,23 +36,19 @@ export class DashboardComponent implements OnInit {
   public paginationTotalItems!: number;
   pagination!: Pagination;
   public total: any;
+  public columnsCopy: Columns[] = [];
+  checked = new Set(['ID', 'name']);
   ngOnInit(): void {
     this.configuration = { ...DefaultConfig };
     this.configuration.searchEnabled = true;
-    this.configuration.fixedColumnWidth = true;
+    this.configuration.resizeColumn = true;
+    this.configuration.fixedColumnWidth = false;
     // ... etc.
-    this.columns = [
-      { key: 'studentId', title: 'ID' },
-      { key: 'studentName', title: 'Name' },
-      { key: 'class', title: 'Class' },
-      { key: 'section', title: 'Section' },
-      { key: 'fatherName', title: 'Father Name' },
-      { key: 'motherName', title: 'Mother Name' },
-      { key: 'fatherPhoneNumber', title: 'Father PH' },
-      { key: 'motherPhoneNumber', title: 'Mother PH' },
-      { key: 'govtChildId', title: 'Child ID' },
-      { key: 'edit', title: 'Edit' },
+    this.columnsCopy = [
+      { key: 'ID', title: 'ID' },
+      { key: 'name', title: 'Name' }
     ];
+    this.columns = this.columnsCopy;
     this.data$ = this.dashboardService.getDashboardData();
   }
 
@@ -83,5 +80,9 @@ export class DashboardComponent implements OnInit {
   goToEdit(row: any) {
     alert(JSON.stringify(row, null, 2));
     alert(row.studentId);
+  }
+  toggle(name: string): void {
+    this.checked.has(name) ? this.checked.delete(name) : this.checked.add(name);
+    this.columns = this.columnsCopy.filter((column) => this.checked.has(column.key));
   }
 }

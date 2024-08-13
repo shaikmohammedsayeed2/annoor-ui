@@ -28,17 +28,30 @@
 
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
-      <li class="nav-item d-block d-lg-none"  (click)="goto('/student/addstudent')">
+      <li
+        class="nav-item d-block d-lg-none"
+        (click)="goto('/student/addstudent')"
+      >
         <a class="nav-link nav-icon search-bar-toggle">
           <i class="bi bi-plus-square-fill"></i>
         </a>
       </li>
       <!-- End Search Icon-->
+      <li class="nav-item" >
+        <asl-google-signin-button *ngIf="!loggedIn" type="icon" size="medium" text="continue_with" theme="filled_black" shape="pill"></asl-google-signin-button>
+      </li>
+      <li *ngIf="loggedIn" class="nav-item">
+        <span class="d-none d-lg-block" style="color: black; font-weight: bold"
+          >{{socialUser.name}}
+        ></span>
+      </li>
       <li class="nav-item" (click)="goto('/student/addstudent')">
-            <span class="d-none d-lg-block" style="color: black;font-weight: bold;">Add Student<i
-              class="bi bi-plus-square-fill"
-              style="color: #012970; cursor: pointer;margin-left: 4px;"
-            ></i></span>
+        <span class="d-none d-lg-block" style="color: black; font-weight: bold"
+          >Add Student<i
+            class="bi bi-plus-square-fill"
+            style="color: #012970; cursor: pointer; margin-left: 4px"
+          ></i
+        ></span>
       </li>
       <li class="nav-item dropdown pe-3">
         <a
@@ -46,8 +59,8 @@
           href="#"
           data-bs-toggle="dropdown"
         >
-          <img
-            src="../../../../assets/img/admin_imthiaz.jpg"
+          <img *ngIf="loggedIn"
+            src={{socialUser.photoUrl}}
             alt="Profile"
             class="rounded-circle"
           />

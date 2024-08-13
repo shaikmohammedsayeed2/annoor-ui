@@ -8,6 +8,7 @@ import { AuthComponent } from './auth/auth.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsContainer } from './service/toast/toasts-container.component';
 import { RouterModule } from '@angular/router';
+import { GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 
 
@@ -23,7 +24,29 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     NgbModule,
-    RouterModule
-  ]
+    RouterModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule
+  ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        lang: 'en',
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '699904701182-d6uq7rvourd1rm8uitc4g300gn9f7j16.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+  ],
 })
 export class CoreModule { }

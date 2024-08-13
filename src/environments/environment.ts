@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
   // apiUrl:'https://localhost:7063/api/',
-  apiUrl:'https://annoorapi.azure-api.net/v1/api/'
+  apiUrl:'https://annoor-search-engine.onrender.com/'
 };
 
 /*

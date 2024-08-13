@@ -37,6 +37,18 @@
         </div>
       </form>
     </div>
+    <div class="column col-12">
+      <div class="form-group">
+        <label class="form-checkbox form-inline">
+          <input type="checkbox" [checked]="true" (change)="toggle('ID')" />
+          <em class="form-icon"></em> ID
+        </label>
+        <label class="form-checkbox form-inline" for="ageCheckbox">
+          <input type="checkbox" [checked]="true" id="ageCheckbox" (change)="toggle('name')" />
+          <em class="form-icon"></em> Name
+        </label>
+      </div>
+    </div>
     <div class="column col-lg-12">
       <ngx-table
         [configuration]="configuration"
@@ -44,33 +56,12 @@
         #table
         [columns]="columns"
       >
-        <ng-template let-row>
+        <!-- <ng-template let-row>
           <td>
-            <span class="font-small">{{ row.studentId }}</span>
+            <span class="font-small">{{ row.ID }}</span>
           </td>
           <td>
-            <span class="font-small">{{ row.studentName }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.class }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.section }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.fatherName }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.motherName }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.fatherPhoneNumber }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.motherPhoneNumber }}</span>
-          </td>
-          <td>
-            <span class="font-small">{{ row.govtChildId }}</span>
+            <span class="font-small">{{ row.name }}</span>
           </td>
           <td>
             <i
@@ -98,7 +89,7 @@
               ngbTooltip="Delete"
             ></i>
           </td>
-        </ng-template>
+        </ng-template> -->
       </ngx-table>
     </div>
   </div>
