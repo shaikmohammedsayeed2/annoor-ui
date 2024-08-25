@@ -45,8 +45,30 @@ export class DashboardComponent implements OnInit {
     this.configuration.fixedColumnWidth = false;
     // ... etc.
     this.columnsCopy = [
-      { key: 'ID', title: 'ID' },
-      { key: 'name', title: 'Name' }
+      { key: 'admission_number', title: 'Admission Number' },
+      { key: 'student_name', title: 'Student Name' },
+      { key: 'mother_tongue', title: 'Mother Tongue' },
+      { key: 'date_of_birth', title: 'DOB' },
+      { key: 'nationality', title: 'Nationality' },
+      { key: 'religion', title: 'Religion' },
+      { key: 'caste', title: 'Caste' },
+      { key: 'father_name', title: 'Father Name' },
+      { key: 'mother_name', title: 'Mother Name' },
+      { key: 'occupation', title: 'Occupation' },
+      { key: 'student_aadhaar_number', title: 'Student Aadhaar No' },
+      { key: 'student_id', title: 'Student Id' },
+      { key: 'last_school_and_class', title: 'Last School and Class' },
+      { key: 'date_of_admission', title: 'Date of Admission' },
+      { key: 'class_on_admission', title: 'Class on Admission' },
+      { key: 'record_and_sheet_submitted', title: 'Record and Sheet submitted' },
+      { key: 'tc_submitted', title: 'TC Submitted' },
+      { key: 'birth_marks', title: 'Birth Marks' },
+      { key: 'medium', title: 'Medium' },
+      { key: 'class_on_leaving', title: 'Class on Leaving' },
+      { key: 'date_of_leaving', title: 'Date of Leaving' },
+      { key: 'reason_of_leaving', title: 'Reason of Leaving' },
+      { key: 'school_left_name', title: 'School Left Name' },
+      { key: 'hm_or_principal_initial', title: 'HM or Principal Initial' },
     ];
     this.columns = this.columnsCopy;
     this.data$ = this.dashboardService.getDashboardData();

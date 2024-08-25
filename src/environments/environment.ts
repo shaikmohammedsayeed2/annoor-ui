@@ -4,8 +4,8 @@
 
 export const environment = {
   production: true,
-  apiUrl:'http://localhost:8080/v1/',
-  // apiUrl:'https://annoor-search-engine.onrender.com/'
+  // apiUrl:'http://localhost:8080/v1/',
+  apiUrl:'https://annoor-search-engine.onrender.com/v1/'
 };
 
 /*
