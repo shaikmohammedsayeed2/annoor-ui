@@ -13,6 +13,14 @@ import { ExportToCsv } from 'export-to-csv';
 import { Observable } from 'rxjs';
 import { DashboardService } from './dashboard.service';
 import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { FormsModule } from '@angular/forms';
+
+interface StudentData {
+  admissionId: string;
+  name: string;
+  class: string;
+  section: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -38,6 +46,16 @@ export class DashboardComponent implements OnInit {
   public total: any;
   public columnsCopy: Columns[] = [];
   checked = new Set(['ID', 'name']);
+  selectedClass: string = '';
+  selectedSection: string = '';
+  selectedStudent: string = '';
+  admissionId: string = '';
+  
+  classes: any[] = [];
+  sections: any[] = [];
+  students: any[] = [];
+  studentData: StudentData[] = [];
+
   ngOnInit(): void {
     this.configuration = { ...DefaultConfig };
     this.configuration.searchEnabled = true;
@@ -72,6 +90,11 @@ export class DashboardComponent implements OnInit {
     ];
     this.columns = this.columnsCopy;
     this.data$ = this.dashboardService.getDashboardData();
+    // Initialize your data here
+    this.studentData = [
+      { admissionId: 'A001', name: 'John Doe', class: '10th', section: 'A' },
+      { admissionId: 'A002', name: 'Jane Smith', class: '9th', section: 'B' }
+    ];
   }
 
   exportToCSV(): void {
@@ -106,5 +129,23 @@ export class DashboardComponent implements OnInit {
   toggle(name: string): void {
     this.checked.has(name) ? this.checked.delete(name) : this.checked.add(name);
     this.columns = this.columnsCopy.filter((column) => this.checked.has(column.key));
+  }
+
+  search() {
+    // Implement your search logic here
+    console.log('Searching...');
+  }
+
+  searchByAdmissionId() {
+    if (this.admissionId) {
+      console.log('Searching for admission ID:', this.admissionId);
+      // Implement your admission ID search logic here
+    }
+  }
+
+  payFee(student: StudentData) {
+    console.log('Processing fee payment for:', student);
+    // Navigate to fee payment page or open modal
+    this.router.navigate(['/fee-payment', student.admissionId]);
   }
 }

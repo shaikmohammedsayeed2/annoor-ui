@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { pick } from 'lodash';
 
@@ -6,7 +7,9 @@ import { pick } from 'lodash';
   providedIn: 'root',
 })
 export class LodashService {
-  constructor() {}
+  constructor(
+    private route: Router,
+  ) { }
 
   get pick() {
     return pick;
@@ -135,4 +138,7 @@ export class LodashService {
     return _.omit
   }
 
+   goto(url:any){
+    return this.route.navigate([url])
+  }
 }

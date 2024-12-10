@@ -39,6 +39,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./features/users/users.module').then((m) => m.UsersModule),
       },
+      {
+        path: 'fees',
+        loadChildren: () =>
+          import('./features/fees/fees.module').then((m) => m.FeesModule),
+      },
     ],
   },
   { path: '**', redirectTo: '/' },
